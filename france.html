@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>France Jeopardy</title>
+  <link rel="stylesheet" href="france.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Jeopardy: France Edition</h1>
+    <div class="scoreboard">
+      <span>Score: <span id="score">0</span></span>
+    </div>
+    <div class="board">
+      <div class="category">History</div>
+      <div class="category">Geography</div>
+      <div class="category">Culture</div>
+      <div class="category">Language</div>
+      <div class="category">Cuisine</div>
+
+      <!-- Questions (5 categories x 5 rows) -->
+      <script>
+        const categories = ["History", "Geography", "Culture", "Language", "Cuisine"];
+        const questions = {
+          History: [
+            "Who was the leader of France during WWII?",
+            "What year did the French Revolution begin?",
+            "What French military leader became Emperor?",
+            "When did France become a republic?",
+            "What was the name of the storming prison in 1789?"
+          ],
+          Geography: [
+            "What river runs through Paris?",
+            "Where are the French Alps located?",
+            "What country borders France to the south?",
+            "What island is part of France in the Mediterranean?",
+            "What ocean lies west of France?"
+          ],
+          Culture: [
+            "What is the famous art museum in Paris?",
+            "What is Bastille Day?",
+            "Which French writer wrote Les Misérables?",
+            "What is the Can-Can?",
+            "Where is the Palace of Versailles?"
+          ],
+          Language: [
+            "What is 'Hello' in French?",
+            "What is 'Thank you' in French?",
+            "What does 'je t'aime' mean?",
+            "Is French a Romance language?",
+            "How do you say 'Goodbye' in French?"
+          ],
+          Cuisine: [
+            "What is a croissant?",
+            "What cheese is known for its blue veins?",
+            "What is ratatouille?",
+            "What is crème brûlée?",
+            "What is the main ingredient in coq au vin?"
+          ]
+        };
+
+        const answers = {
+          History: [
+            "Charles de Gaulle",
+            "1789",
+            "Napoleon Bonaparte",
+            "1792",
+            "The Bastille"
+          ],
+          Geography: [
+            "The Seine",
+            "Southeast France",
+            "Spain",
+            "Corsica",
+            "Atlantic Ocean"
+          ],
+          Culture: [
+            "The Louvre",
+            "French National Day (July 14th)",
+            "Victor Hugo",
+            "A French dance",
+            "Near Paris"
+          ],
+          Language: [
+            "Bonjour",
+            "Merci",
+            "I love you",
+            "Yes",
+            "Au revoir"
+          ],
+          Cuisine: [
+            "A buttery, flaky pastry",
+            "Roquefort",
+            "A vegetable stew",
+            "A dessert with a caramelized sugar top",
+            "Chicken"
+          ]
+        };
+
+        let score = 0;
+        function updateScore(amount) {
+          score += amount;
+          document.getElementById("score").textContent = score;
+        }
+
+        const board = document.querySelector(".board");
+
+        for (let row = 0; row < 5; row++) {
+          for (let col = 0; col < categories.length; col++) {
+            const cat = categories[col];
+            const btn = document.createElement("button");
+            btn.textContent = `${(row + 1) * 100}`;
+            btn.className = "cell";
+            btn.onclick = () => {
+              if (btn.disabled) return;
+              const userCorrect = confirm(
+                questions[cat][row] + "\n\nClick OK if correct, Cancel if wrong.\nAnswer: " + answers[cat][row]
+              );
+              btn.disabled = true;
+              updateScore(userCorrect ? (row + 1) * 100 : -(row + 1) * 100);
+              btn.textContent = "✔";
+            };
+            board.appendChild(btn);
+          }
+        }
+      </script>
+    </div>
+  </div>
+</body>
+</html>

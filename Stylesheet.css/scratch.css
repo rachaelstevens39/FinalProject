@@ -1,0 +1,65 @@
+/* My four style definitions */
+
+body {
+    color: darkcyan;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: large;
+}
+
+ol {
+    font-weight: bold;
+    font-size: medium;
+}
+
+ul {
+    font-weight: normal;
+    font-style: italic;
+    font-size: medium;
+}
+
+.bottomheader {
+    font-size: large;
+    text-align: center;
+}
+
+.h4change {
+    font-style: normal;
+}
+
+
+/* this is for my centering and aliging on page */
+
+.header {
+    text-align: center;
+}
+
+
+/* .areas{
+    text-align: left;
+    position: relative; */
+
+.section-wrapper {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 40px;
+    /* Top-Bottom: 20px, Left-Right: 40px */
+    gap: 60px;
+    /* space between columns */
+}
+
+.areas,
+.companions {
+    flex: 1;
+    /* let them share the space evenly */
+    max-width: 45%;
+    /* optional: prevent one from taking too much space */
+}
+
+.areas {
+    text-align: left;
+}
+
+.companions {
+    text-align: left;
+    padding-left: 1000px;
+}
